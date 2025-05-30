@@ -13,11 +13,11 @@ public class SupervisorThread extends Thread {
     public void run() {
         for (int i = 0; i < threads.length; i++) {
             try {
-                Thread.sleep(delay); // Чекає перед завершенням наступного потоку
+                Thread.sleep(delay); 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            threads[i].stopRunning(); // Дозвіл потоку завершити роботу
+            threads[i].stopRunning(); // Дозвіл 
         }
     }
 }
