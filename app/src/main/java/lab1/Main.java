@@ -10,21 +10,22 @@ public class Main {
 
         SequenceSumThread[] threads = new SequenceSumThread[threadCount];
 
+        // Стартуємо обчислювальні потоки
         for (int i = 0; i < threadCount; i++) {
             threads[i] = new SequenceSumThread(i + 1, i + 1);
             threads[i].start();
         }
 
-        Thread.sleep(1000);
+        // Стартуємо керуючий потік, який по черзі зупиняє кожен потік
+        SupervisorThread supervisor = new SupervisorThread(threads, 200); // затримка 200 мс
+        supervisor.start();
 
-        for (int i = 0; i < threadCount; i++) {
-            threads[i].stopRunning();
-        }
-
+        // Чекаємо завершення всіх обчислювальних потоків
         for (int i = 0; i < threadCount; i++) {
             threads[i].join();
         }
 
+        supervisor.join(); // Чекаємо завершення керуючого потоку
         System.out.println("Всі потоки завершили роботу.");
     }
 }
