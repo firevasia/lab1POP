@@ -17,7 +17,7 @@ public class SupervisorThread extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            threads[i].stopRunning(); // Дозвіл 
+            threads[i].stopRunning(); 
         }
     }
 }

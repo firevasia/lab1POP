@@ -15,7 +15,7 @@ public class Main {
             threads[i].start();
         }
 
-        SupervisorThread supervisor = new SupervisorThread(threads, 200); 
+        SupervisorThread supervisor = new SupervisorThread(threads, 200);
         supervisor.start();
 
         for (int i = 0; i < threadCount; i++) {
